@@ -28,9 +28,7 @@ class data():
         parser = None
 
     def find_vocab(self):
-        self.text = ""
-        for fortune in self.fortunes:
-            self.text += fortune+"\n"
+        self.text = self.fortunes
 
         #print(self.text[:50])
         self.vocab = sorted(set(self.text))
@@ -67,11 +65,11 @@ class data():
 
 
 class learner():
-    def __init__(self,data):
+    def __init__(self):
         self.checkpoint_dir = './training_checkpoints'
         self.EPOCHS = 3
 
-        self.data = data
+        self.data = data()
         self.model_setup()
         self.model = self._build_model(
                             vocab_size = self.vocab_size,
@@ -199,5 +197,3 @@ class learner():
         ])
         return model
 
-Data = data()
-Learner = learner(Data)

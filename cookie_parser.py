@@ -54,11 +54,7 @@ class parser():
     def load_from_main_data(self):
         if path.exists(self.main_path):
             File = open(self.main_path,'r')
-            Fortunes = []
-            for line in File:
-                if line:
-                    line = line.replace("\n","")
-                    Fortunes.append(line)
+            Fortunes = File.read()
             return Fortunes
         else:
             raise Exception("No Path")
